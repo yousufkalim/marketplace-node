@@ -1,5 +1,5 @@
 /**
- * Node-JS Boilerplate
+ * Marketplace Module Project
  * @author Yousuf Kalim
  */
 require("dotenv").config();
