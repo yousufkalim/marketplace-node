@@ -13,8 +13,8 @@ Validations
 // You can create multiple validations strategies (Read express-validator documentation for more details)
 // User Signup Validation
 exports.validateUser = [
-  check("name", "Name is required.").notEmpty().trim(),
-  check("cnic", "CNIC is required.").notEmpty().trim().isNumeric(),
+  check("first_name", "First name is required.").notEmpty().trim(),
+  check("last_name", "Last name is required.").notEmpty().trim(),
   check("email", "Email is required.").notEmpty().isEmail().trim(),
   check("password", "Password is required.")
     .notEmpty()
@@ -24,19 +24,32 @@ exports.validateUser = [
     .notEmpty()
     .trim()
     .isLength({ min: 8 }),
-  check("gender", "Gender is required.").notEmpty(),
-  check("role", "Role is required.").notEmpty(),
-  check("number", "Number is required.").notEmpty().isNumeric().trim(),
+  check("phone", "Phone number is required.").notEmpty().isNumeric().trim(),
 ];
 
-// User Signup Validation
-exports.validateUserUpdate = [
-  check("name", "Name is required.").notEmpty().trim(),
-  check("cnic", "CNIC is required.").notEmpty().isNumeric().trim(),
-  check("email", "Email is required.").notEmpty().isEmail().trim(),
-  check("gender", "Gender is required.").notEmpty(),
-  check("role", "Role is required.").notEmpty(),
-  check("number", "Number is required.").notEmpty().isNumeric().trim(),
+// Login validation
+exports.validateLogin = [
+  check("email", "Email is required").notEmpty().isEmail().trim().toLowerCase(),
+  check("password", "Password is required.")
+    .notEmpty()
+    .trim()
+    .isLength({ min: 8 }),
+];
+
+// Change password validation
+exports.changePasswordValidate = [
+  check("oldPassword", "Old Password is required.")
+    .notEmpty()
+    .trim()
+    .isLength({ min: 8 }),
+  check("newPassword", "New password is required.")
+    .notEmpty()
+    .trim()
+    .isLength({ min: 8 }),
+  check("confirmPassword", "Confirm password is required.")
+    .notEmpty()
+    .trim()
+    .isLength({ min: 8 }),
 ];
 
 /*
